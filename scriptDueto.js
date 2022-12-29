@@ -24,9 +24,6 @@ const duetoMapa = {};
 // MAPA TERMO
 for (let index = 0; index < termo.length; index++) {
   termoMapa[termo[index]] = index;
-}
-// MAPA DUETO
-for (let index = 0; index < dueto.length; index++) {
   duetoMapa[dueto[index]] = index;
 }
 // PRIMEIRO TABULEIRO
@@ -238,23 +235,20 @@ const HandleBackSpace = () => {
   );
   letraAtual.textContent = '';
 };
-
-// APAGAR SEGUNDO TABULEIRO
-
 const HandleBackSpaceD = () => {
+  console.log('oi');
   if (colunaAtualD === 0) {
-    return;
-  }
-  if (ganhou === true) {
     return;
   }
   colunaAtualD--;
   palpitesD[linhaAtualD][colunaAtualD] = '';
-  const letraAtual = document.getElementById(
+  const letraAtualD = document.getElementById(
     `${linhaAtualD}linhaD` + `${colunaAtualD}colunaD`,
   );
-  letraAtual.textContent = '';
+  letraAtualD.textContent = '';
 };
+
+// APAGAR SEGUNDO TABULEIRO
 
 const enterButton = document.createElement('button');
 enterButton.addEventListener('click', ChecaPalpite);
@@ -269,3 +263,17 @@ backSpaceButton.addEventListener('click', HandleBackSpaceD);
 backSpaceButton.setAttribute('class', 'backspace');
 backSpaceButton.textContent = '↩';
 keyBoardRow2.append(backSpaceButton);
+
+document.onkeydown = function (evt) {
+  evt = evt || window.evt;
+  if (evt.key === 'Enter') {
+    ChecaPalpite();
+    ChecaPalpiteD();
+  } else if (evt.key === 'Backspace') {
+    HandleBackSpace();
+    HandleBackSpaceD();
+  } else {
+    handleClick(evt.key.toUpperCase());
+    handleClickD(evt.key.toUpperCase());
+  }
+};

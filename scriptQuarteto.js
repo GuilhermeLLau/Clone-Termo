@@ -20,6 +20,9 @@ let colunaAtual4 = 0;
 const colunas = 5;
 const linhas = 7;
 let ganhou = false;
+let ganhou2 = false;
+let ganhou3 = false;
+let ganhou4 = false;
 const palpites = [];
 const palpites2 = [];
 const palpites3 = [];
@@ -129,37 +132,48 @@ for (let indexLinha = 0; indexLinha < linhas; indexLinha++) {
 // CLIQUE DE TECLA PRIMEIRO TABULEIRO
 
 const handleClick = (key) => {
-  if (
-    colunaAtual === colunas &&
-    colunaAtual2 === colunas &&
-    colunaAtual3 === colunas &&
-    colunaAtual4 === colunas
-  ) {
+  if (colunaAtual === colunas) {
     return;
   }
   const letraAtual = document.getElementById(
     `${linhaAtual}linha` + `${colunaAtual}coluna`,
   );
+  letraAtual.textContent = key;
+  palpites[linhaAtual][colunaAtual] = key;
+  colunaAtual++;
+};
+
+const handleClick2 = (key) => {
+  if (colunaAtual2 === colunas) {
+    return;
+  }
   const letraAtual2 = document.getElementById(
     `${linhaAtual2}linha2` + `${colunaAtual2}coluna2`,
   );
+  letraAtual2.textContent = key;
+  palpites2[linhaAtual2][colunaAtual2] = key;
+  colunaAtual2++;
+};
+const handleClick3 = (key) => {
+  if (colunaAtual3 === colunas) {
+    return;
+  }
   const letraAtual3 = document.getElementById(
     `${linhaAtual3}linha3` + `${colunaAtual3}coluna3`,
   );
+  letraAtual3.textContent = key;
+  palpites3[linhaAtual3][colunaAtual3] = key;
+  colunaAtual3++;
+};
+const handleClick4 = (key) => {
+  if (colunaAtual4 === colunas) {
+    return;
+  }
   const letraAtual4 = document.getElementById(
     `${linhaAtual4}linha4` + `${colunaAtual4}coluna4`,
   );
-  letraAtual.textContent = key;
-  letraAtual2.textContent = key;
-  letraAtual3.textContent = key;
   letraAtual4.textContent = key;
-  palpites[linhaAtual][colunaAtual] = key;
-  palpites2[linhaAtual2][colunaAtual2] = key;
-  palpites3[linhaAtual3][colunaAtual3] = key;
   palpites4[linhaAtual4][colunaAtual4] = key;
-  colunaAtual++;
-  colunaAtual2++;
-  colunaAtual3++;
   colunaAtual4++;
 };
 
@@ -173,6 +187,9 @@ const CreateKeyRow = (keys, keyRow) => {
     Teclado.setAttribute('class', 'tecla');
     Teclado.addEventListener('click', () => {
       handleClick(key);
+      handleClick2(key);
+      handleClick3(key);
+      handleClick4(key);
     });
     keyRow.append(Teclado);
   });
@@ -186,23 +203,12 @@ CreateKeyRow(keysThirdRow, keyBoardRow3);
 
 const ChecaPalpite = () => {
   const palpite = palpites[linhaAtual].join('');
-  const palpite2 = palpites2[linhaAtual2].join('');
-  const palpite3 = palpites3[linhaAtual3].join('');
-  const palpite4 = palpites4[linhaAtual4].join('');
   if (palpite.length !== colunas) {
     return;
   }
-
   const tentativaAtual = document.querySelectorAll('.digitando');
-  const tentativaAtual2 = document.querySelectorAll('.digitando2');
-  const tentativaAtual3 = document.querySelectorAll('.digitando3');
-  const tentativaAtual4 = document.querySelectorAll('.digitando4');
-
   for (let index = 0; index < colunas; index++) {
     const letra = palpite[index];
-    const letra2 = palpite2[index];
-    const letra3 = palpite3[index];
-    const letra4 = palpite4[index];
     if (termoMapa[letra] === undefined) {
       tentativaAtual[index].classList.add('errado');
     } else {
@@ -212,6 +218,27 @@ const ChecaPalpite = () => {
         tentativaAtual[index].classList.add('posicaoErrada');
       }
     }
+  }
+
+  if (palpite === termo) {
+    ganhou = true;
+    return;
+  } else {
+    if (linhaAtual === linhas - 1) {
+      window.alert('Errou');
+    } else {
+      ProximaLinha();
+    }
+  }
+};
+const ChecaPalpite2 = () => {
+  const palpite2 = palpites2[linhaAtual2].join('');
+  if (palpite2.length !== colunas) {
+    return;
+  }
+  const tentativaAtual2 = document.querySelectorAll('.digitando2');
+  for (let index = 0; index < colunas; index++) {
+    const letra2 = palpite2[index];
     if (termoMapa2[letra2] === undefined) {
       tentativaAtual2[index].classList.add('errado');
     } else {
@@ -221,6 +248,26 @@ const ChecaPalpite = () => {
         tentativaAtual2[index].classList.add('posicaoErrada');
       }
     }
+  }
+  if (palpite2 === termo2) {
+    ganhou2 = true;
+    return;
+  } else {
+    if (linhaAtual2 === linhas - 1) {
+      window.alert('Errou');
+    } else {
+      ProximaLinha2();
+    }
+  }
+};
+const ChecaPalpite3 = () => {
+  const palpite3 = palpites3[linhaAtual3].join('');
+  if (palpite3.length !== colunas) {
+    return;
+  }
+  const tentativaAtual3 = document.querySelectorAll('.digitando3');
+  for (let index = 0; index < colunas; index++) {
+    const letra3 = palpite3[index];
     if (termoMapa3[letra3] === undefined) {
       tentativaAtual3[index].classList.add('errado');
     } else {
@@ -230,6 +277,26 @@ const ChecaPalpite = () => {
         tentativaAtual3[index].classList.add('posicaoErrada');
       }
     }
+  }
+  if (palpite3 === termo3) {
+    ganhou3 = true;
+    return;
+  } else {
+    if (linhaAtual3 === linhas - 1) {
+      window.alert('Errou');
+    } else {
+      ProximaLinha3();
+    }
+  }
+};
+const ChecaPalpite4 = () => {
+  const palpite4 = palpites4[linhaAtual4].join('');
+  if (palpite4.length !== colunas) {
+    return;
+  }
+  const tentativaAtual4 = document.querySelectorAll('.digitando4');
+  for (let index = 0; index < colunas; index++) {
+    const letra4 = palpite4[index];
     if (termoMapa4[letra4] === undefined) {
       tentativaAtual4[index].classList.add('errado');
     } else {
@@ -240,11 +307,14 @@ const ChecaPalpite = () => {
       }
     }
   }
-  {
-    if (linhaAtual === linhas - 1) {
+  if (palpite4 === termo4) {
+    ganhou4 = true;
+    return;
+  } else {
+    if (linhaAtual4 === linhas - 1) {
       window.alert('Errou');
     } else {
-      ProximaLinha();
+      ProximaLinha4();
     }
   }
 };
@@ -255,54 +325,61 @@ const ChecaPalpite = () => {
 
 const ProximaLinha = () => {
   const palpiteAtual = document.querySelectorAll('.digitando');
-  const palpiteAtual2 = document.querySelectorAll('.digitando2');
-  const palpiteAtual3 = document.querySelectorAll('.digitando3');
-  const palpiteAtual4 = document.querySelectorAll('.digitando4');
   for (let index = 0; index < palpiteAtual.length; index++) {
     palpiteAtual[index].classList.remove('digitando');
     palpiteAtual[index].classList.add('desativada');
   }
-  for (let index = 0; index < palpiteAtual.length; index++) {
-    palpiteAtual2[index].classList.remove('digitando2');
-    palpiteAtual2[index].classList.add('desativada2');
-  }
-  for (let index = 0; index < palpiteAtual.length; index++) {
-    palpiteAtual3[index].classList.remove('digitando3');
-    palpiteAtual3[index].classList.add('desativada3');
-  }
-  for (let index = 0; index < palpiteAtual.length; index++) {
-    palpiteAtual4[index].classList.remove('digitando4');
-    palpiteAtual4[index].classList.add('desativada4');
-  }
   linhaAtual++;
-  linhaAtual2++;
-  linhaAtual3++;
-  linhaAtual4++;
   colunaAtual = 0;
-  colunaAtual2 = 0;
-  colunaAtual3 = 0;
-  colunaAtual4 = 0;
   const proximoPalpite = document.getElementById(`${linhaAtual}linha`);
-  const proximoPalpite2 = document.getElementById(`${linhaAtual2}linha2`);
-  const proximoPalpite3 = document.getElementById(`${linhaAtual3}linha3`);
-  const proximoPalpite4 = document.getElementById(`${linhaAtual4}linha4`);
   const proximoPalpiteColunas = proximoPalpite.querySelectorAll('.coluna');
-  const proximoPalpiteColunas2 = proximoPalpite2.querySelectorAll('.coluna2');
-  const proximoPalpiteColunas3 = proximoPalpite3.querySelectorAll('.coluna3');
-  const proximoPalpiteColunas4 = proximoPalpite4.querySelectorAll('.coluna4');
   for (let index = 0; index < palpiteAtual.length; index++) {
     proximoPalpiteColunas[index].classList.remove('desativada');
     proximoPalpiteColunas[index].classList.add('digitando');
   }
-  for (let index = 0; index < palpiteAtual.length; index++) {
+};
+
+const ProximaLinha2 = () => {
+  const palpiteAtual2 = document.querySelectorAll('.digitando2');
+  for (let index = 0; index < palpiteAtual2.length; index++) {
+    palpiteAtual2[index].classList.remove('digitando2');
+    palpiteAtual2[index].classList.add('desativada2');
+  }
+  linhaAtual2++;
+  colunaAtual2 = 0;
+  const proximoPalpite2 = document.getElementById(`${linhaAtual2}linha2`);
+  const proximoPalpiteColunas2 = proximoPalpite2.querySelectorAll('.coluna2');
+  for (let index = 0; index < palpiteAtual2.length; index++) {
     proximoPalpiteColunas2[index].classList.remove('desativada2');
     proximoPalpiteColunas2[index].classList.add('digitando2');
   }
-  for (let index = 0; index < palpiteAtual.length; index++) {
+};
+const ProximaLinha3 = () => {
+  const palpiteAtual3 = document.querySelectorAll('.digitando3');
+  for (let index = 0; index < palpiteAtual3.length; index++) {
+    palpiteAtual3[index].classList.remove('digitando3');
+    palpiteAtual3[index].classList.add('desativada3');
+  }
+  linhaAtual3++;
+  colunaAtual3 = 0;
+  const proximoPalpite3 = document.getElementById(`${linhaAtual3}linha3`);
+  const proximoPalpiteColunas3 = proximoPalpite3.querySelectorAll('.coluna3');
+  for (let index = 0; index < palpiteAtual3.length; index++) {
     proximoPalpiteColunas3[index].classList.remove('desativada3');
     proximoPalpiteColunas3[index].classList.add('digitando3');
   }
-  for (let index = 0; index < palpiteAtual.length; index++) {
+};
+const ProximaLinha4 = () => {
+  const palpiteAtual4 = document.querySelectorAll('.digitando4');
+  for (let index = 0; index < palpiteAtual4.length; index++) {
+    palpiteAtual4[index].classList.remove('digitando4');
+    palpiteAtual4[index].classList.add('desativada4');
+  }
+  linhaAtual4++;
+  colunaAtual4 = 0;
+  const proximoPalpite4 = document.getElementById(`${linhaAtual4}linha4`);
+  const proximoPalpiteColunas4 = proximoPalpite4.querySelectorAll('.coluna4');
+  for (let index = 0; index < palpiteAtual4.length; index++) {
     proximoPalpiteColunas4[index].classList.remove('desativada4');
     proximoPalpiteColunas4[index].classList.add('digitando4');
   }
@@ -318,33 +395,60 @@ const HandleBackSpace = () => {
     return;
   }
   colunaAtual--;
-  colunaAtual2--;
-  colunaAtual3--;
-  colunaAtual4--;
   palpites[linhaAtual][colunaAtual] = '';
-  palpites2[linhaAtual2][colunaAtual2] = '';
-  palpites3[linhaAtual3][colunaAtual3] = '';
-  palpites4[linhaAtual4][colunaAtual4] = '';
   const letraAtual = document.getElementById(
     `${linhaAtual}linha` + `${colunaAtual}coluna`,
   );
-  const letraAtual2 = document.getElementById(
+  letraAtual.textContent = '';
+};
+const HandleBackSpace2 = () => {
+  if (colunaAtual2 === 0) {
+    return;
+  }
+  if (ganhou2 === true) {
+    return;
+  }
+  colunaAtual2--;
+  palpites2[linhaAtual2][colunaAtual2] = '';
+  const letraAtual = document.getElementById(
     `${linhaAtual2}linha2` + `${colunaAtual2}coluna2`,
   );
-  const letraAtual3 = document.getElementById(
+  letraAtual.textContent = '';
+};
+const HandleBackSpace3 = () => {
+  if (colunaAtual3 === 0) {
+    return;
+  }
+  if (ganhou3 === true) {
+    return;
+  }
+  colunaAtual3--;
+  palpites3[linhaAtual3][colunaAtual3] = '';
+  const letraAtual = document.getElementById(
     `${linhaAtual3}linha3` + `${colunaAtual3}coluna3`,
   );
-  const letraAtual4 = document.getElementById(
+  letraAtual.textContent = '';
+};
+const HandleBackSpace4 = () => {
+  if (colunaAtual4 === 0) {
+    return;
+  }
+  if (ganhou4 === true) {
+    return;
+  }
+  colunaAtual4--;
+  palpites4[linhaAtual4][colunaAtual4] = '';
+  const letraAtual = document.getElementById(
     `${linhaAtual4}linha4` + `${colunaAtual4}coluna4`,
   );
   letraAtual.textContent = '';
-  letraAtual2.textContent = '';
-  letraAtual3.textContent = '';
-  letraAtual4.textContent = '';
 };
 
 const enterButton = document.createElement('button');
 enterButton.addEventListener('click', ChecaPalpite);
+enterButton.addEventListener('click', ChecaPalpite2);
+enterButton.addEventListener('click', ChecaPalpite3);
+enterButton.addEventListener('click', ChecaPalpite4);
 enterButton.setAttribute('class', 'enter');
 enterButton.textContent = '✔';
 keyBoardRow3.append(enterButton);
@@ -354,3 +458,23 @@ backSpaceButton.addEventListener('click', HandleBackSpace);
 backSpaceButton.setAttribute('class', 'backspace');
 backSpaceButton.textContent = '↩';
 keyBoardRow2.append(backSpaceButton);
+
+document.onkeydown = function (evt) {
+  evt = evt || window.evt;
+  if (evt.key === 'Enter') {
+    ChecaPalpite();
+    ChecaPalpite2();
+    ChecaPalpite3();
+    ChecaPalpite4();
+  } else if (evt.key === 'Backspace') {
+    HandleBackSpace();
+    HandleBackSpace2();
+    HandleBackSpace3();
+    HandleBackSpace4();
+  } else {
+    handleClick(evt.key.toUpperCase());
+    handleClick2(evt.key.toUpperCase());
+    handleClick3(evt.key.toUpperCase());
+    handleClick4(evt.key.toUpperCase());
+  }
+};
