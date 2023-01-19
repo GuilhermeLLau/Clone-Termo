@@ -13,10 +13,15 @@
 </head>
 
 <body>
-  <div class="app-container">
+  <div id="Menu" class="menuDinamico">
+    <a href="index.html" class="menuLi">termo</a>
+    <a href="dueto.html" class="menuLi">dueto</a>
+    <a href="#" class="menuLi">quarteto</a>
+  </div>
+  <div id='app-container' class="app-container">
     <div class="app-header">
       <div class="menu">
-        <a href="index.html" class="menu-span">^</a>
+        <a id="menuDinamico" class="menu-spanNav">^</a>
         <div class="menu-span">?</div>
       </div>
       <h1>Quarteto</h1>
@@ -25,11 +30,11 @@
         <div class="menu-span">⚙</div>
       </div>
     </div>
-    <div class="dueto">
-      <div class="app-game2" id="gameBoard1"></div>
-      <div class="app-game2" id="gameBoard2"></div>
-      <div class="app-game2" id="gameBoard3"></div>
-      <div class="app-game2" id="gameBoard4"></div>
+    <div class="quarteto">
+      <div class="app-gameQ" id="gameBoard1"></div>
+      <div class="app-gameQ" id="gameBoard2"></div>
+      <div class="app-gameQ" id="gameBoard3"></div>
+      <div class="app-gameQ" id="gameBoard4"></div>
     </div>
     <div class="keyboard-container" id="keyBoard">
       <div class="keyBoardFirstRow row" id="keyBoardRow1"></div>

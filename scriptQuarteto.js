@@ -5,10 +5,14 @@ const gameBoard4 = document.getElementById('gameBoard4');
 const keyBoardRow1 = document.getElementById('keyBoardRow1');
 const keyBoardRow2 = document.getElementById('keyBoardRow2');
 const keyBoardRow3 = document.getElementById('keyBoardRow3');
+const menuDinamico = document.getElementById('menuDinamico');
+const menu = document.getElementById('Menu');
+const appContainer = document.getElementById('app-container');
 
 const keysFirstRow = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
 const keysSecondRow = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
 const keysThirdRow = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+const alphabeto = 'abcdefghijklmnopqrstuvwxyz';
 let linhaAtual = 0;
 let colunaAtual = 0;
 let linhaAtual2 = 0;
@@ -472,9 +476,17 @@ document.onkeydown = function (evt) {
     HandleBackSpace3();
     HandleBackSpace4();
   } else {
-    handleClick(evt.key.toUpperCase());
-    handleClick2(evt.key.toUpperCase());
-    handleClick3(evt.key.toUpperCase());
-    handleClick4(evt.key.toUpperCase());
+    if (alphabeto.includes(evt.key)) {
+      handleClick(evt.key.toUpperCase());
+      handleClick2(evt.key.toUpperCase());
+      handleClick3(evt.key.toUpperCase());
+      handleClick4(evt.key.toUpperCase());
+    }
   }
 };
+
+menuDinamico.addEventListener('click', () => {
+  menu.classList.toggle('menuAtivo');
+  menuDinamico.classList.toggle('navAtiva');
+  appContainer.classList.toggle('containerAtivo');
+});

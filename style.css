@@ -1,15 +1,68 @@
 * {
   font-family: 'Mitr';
-  font-weight: 600;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   text-decoration: none;
   color: white;
+  overflow-x: hidden;
 }
 
 
 body {
   background-color: #6E5C62;
+
 }
+
+.menuDinamico {
+  width: 100vw;
+  background-color: #222222;
+  font-size: 1.5rem;
+  font-weight: normal;
+  display: flex;
+  gap: 1rem;
+  padding: 1.4rem 1rem;
+  transition: 0.8s ease-in-out;
+  position: fixed;
+  top: -30%;
+}
+
+.app-container {
+  width: 100%;
+  padding: 1rem 0;
+  transition: 0.8s ease-in-out;
+}
+
+.containerAtivo {
+  margin-top: 5rem;
+}
+
+.menuAtivo {
+  top: 0;
+  position: absolute;
+}
+
+.navAtiva  {
+  transform: rotate(180deg);
+}
+
+.replay {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.replayBtn {
+  text-decoration: underline;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+
 
 /* HEADER */
 
@@ -22,30 +75,40 @@ body {
   justify-content: space-around;
   margin: 0 auto;
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 .menu {
   display: flex;
-  gap: 0.1rem;
+  gap: 0.2rem;
   cursor: pointer;
 }
 
 .menu-span {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30px;
   height: 30px;
   border: 1px solid #B7AEB4;
   border-radius: 10%;
-  padding-top: 0.1rem;
+  overflow-y: hidden;
+}
+
+.menu-spanNav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #B7AEB4;
+  border-radius: 10%;
+  transition: 0.8s ease-in-out;
 }
 
 /* TERMO */
-
-.app-container {
-  height: 100vh;
-}
-
-
 
 .row {
   display: flex;
@@ -98,6 +161,18 @@ body {
   margin: 0 auto;
   width: 330px;
   color: white;
+  margin-bottom: 1rem;
+}
+
+.app-game2 {
+  min-width: 330px;
+  color: white;
+}
+
+.app-gameQ {
+  max-width: 330px;
+  min-width: 243px;
+  color: white;
 }
 
 
@@ -109,38 +184,22 @@ body {
 
 .coluna,.colunaD,.coluna2,.coluna3,.coluna4 {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
   min-width: 42px;
   min-height: 65px;
   border-radius: 10%;
-  text-align: center;
   border: 4px solid rgba(0, 0, 0, 0.5);
-  padding: 1rem;
   margin: .1rem;
   font-weight: 600;
 }
-/* .colunaD {
-  flex: 1;
-  min-width: 42px;
-  min-height: 65px;
-  border-radius: 10%;
-  text-align: center;
-  border: 4px solid rgba(0, 0, 0, 0.5);
-  padding: 1rem;
-  margin: .1rem;
-  font-weight: 600;
+.app-gameQ .coluna,.coluna2,.coluna3,.coluna4 {
+  justify-content: center;
+  font-size: 1rem;
+  min-height: 42px;
 }
-.coluna2,.coluna3,.coluna4 {
-  flex: 1;
-  min-width: 42px;
-  min-height: 65px;
-  border-radius: 10%;
-  text-align: center;
-  border: 4px solid rgba(0, 0, 0, 0.5);
-  padding: 1rem;
-  margin: .1rem;
-  font-weight: 600;
-} */
-
 
 .digitando,.digitandoD,.digitando2,.digitando3,.digitando4 {
   background-color: #6e5c62;
@@ -162,7 +221,6 @@ body {
   background-color: #d3ad69;
 }
 
-
 /* DUETO */
 
 .dueto {
@@ -172,7 +230,24 @@ body {
   margin: 0 auto 1rem auto;
 }
 
-.app-game2 {
-  min-width: 330px;
-  color: white;
+.quarteto {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.teste {
+  background-color: red;
+  margin: 0 auto;
+}
+
+.menuData {
+  display: none;
+  background-color: aliceblue;
+  height: 20vh;
+
+}
+
+.ativado {
+  display: block;
 }
