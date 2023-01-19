@@ -241,13 +241,3 @@ body {
   margin: 0 auto;
 }
 
-.menuData {
-  display: none;
-  background-color: aliceblue;
-  height: 20vh;
-
-}
-
-.ativado {
-  display: block;
-}

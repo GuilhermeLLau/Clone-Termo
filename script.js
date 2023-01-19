@@ -5,7 +5,6 @@ const keyBoardRow3 = document.getElementById('keyBoardRow3');
 const menuDinamico = document.getElementById('menuDinamico');
 const appContainer = document.getElementById('app-container');
 const estatisticas = document.getElementById('estatisticas');
-const data = document.getElementById('data');
 const menu = document.getElementById('Menu');
 const resposta = document.getElementById('resposta');
 const replayBtn = document.getElementById('replayBtn');

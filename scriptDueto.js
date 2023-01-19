@@ -4,8 +4,10 @@ const keyBoardRow1 = document.getElementById('keyBoardRow1');
 const keyBoardRow2 = document.getElementById('keyBoardRow2');
 const keyBoardRow3 = document.getElementById('keyBoardRow3');
 const menuDinamico = document.getElementById('menuDinamico');
-const menu = document.getElementById('Menu');
 const appContainer = document.getElementById('app-container');
+const menu = document.getElementById('Menu');
+const resposta = document.getElementById('resposta');
+const replayBtn = document.getElementById('replayBtn');
 
 const keysFirstRow = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
 const keysSecondRow = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
@@ -20,12 +22,24 @@ const linhas = 7;
 let ganhou = false;
 const palpites = [];
 const palpitesD = [];
-const termo = 'TERMO';
+let termo = '';
 const termoMapa = {};
-const dueto = 'VASCO';
+let dueto = '';
 const duetoMapa = {};
 
-// MAPA TERMO
+console.log(termoo);
+console.log(dueto);
+
+const PegaPalavra = () => {
+  let aux = Math.ceil(Math.random() * ArrayX.length);
+  let auxD = Math.ceil(Math.random() * ArrayX.length);
+  termoo = ArrayX[aux];
+  dueto = ArrayX[auxD];
+  termoo = termoo.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  dueto = dueto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+};
+PegaPalavra();
+
 for (let index = 0; index < termo.length; index++) {
   termoMapa[termo[index]] = index;
   duetoMapa[dueto[index]] = index;
@@ -288,4 +302,12 @@ menuDinamico.addEventListener('click', () => {
   menu.classList.toggle('menuAtivo');
   menuDinamico.classList.toggle('navAtiva');
   appContainer.classList.toggle('containerAtivo');
+});
+
+estatisticas.addEventListener('click', () => {
+  data.classList.toggle('ativado');
+});
+
+replayBtn.addEventListener('click', () => {
+  window.location.reload();
 });
