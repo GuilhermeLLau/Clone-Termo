@@ -1034,6 +1034,7 @@ let termo = termoo.toUpperCase();
 for (let index = 0; index < termo.length; index++) {
   termoMapa[index] = termo[index];
 }
+console.log(termoMapa);
 for (let indexLinha = 0; indexLinha < linhas; indexLinha++) {
   palpites[indexLinha] = new Array(colunas);
   const TileLinha = document.createElement('div');
@@ -1184,10 +1185,6 @@ menuDinamico.addEventListener('click', () => {
   menu.classList.toggle('menuAtivo');
   menuDinamico.classList.toggle('navAtiva');
   appContainer.classList.toggle('containerAtivo');
-});
-
-estatisticas.addEventListener('click', () => {
-  data.classList.toggle('ativado');
 });
 
 replayBtn.addEventListener('click', () => {
