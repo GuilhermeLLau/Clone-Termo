@@ -8,6 +8,8 @@ const appContainer = document.getElementById('app-container');
 const menu = document.getElementById('Menu');
 const resposta = document.getElementById('resposta');
 const replayBtn = document.getElementById('replayBtn');
+const tutorial = document.getElementById('tutorial');
+const menuTutorial = document.getElementById('menuTutorial');
 
 const ArrayX = [
   'sagaz',
@@ -1331,6 +1333,16 @@ menuDinamico.addEventListener('click', () => {
   menu.classList.toggle('menuAtivo');
   menuDinamico.classList.toggle('navAtiva');
   appContainer.classList.toggle('containerAtivo');
+});
+
+menuTutorial.addEventListener('click', () => {
+  tutorial.classList.add('TutorialAtivo');
+  appContainer.classList.add('overflowHidden');
+});
+
+tutorial.addEventListener('click', () => {
+  tutorial.classList.remove('TutorialAtivo');
+  appContainer.classList.remove('overflowHidden');
 });
 
 replayBtn.addEventListener('click', () => {

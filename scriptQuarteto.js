@@ -10,6 +10,8 @@ const menu = document.getElementById('Menu');
 const appContainer = document.getElementById('app-container');
 const resposta = document.getElementById('resposta');
 const replayBtn = document.getElementById('replayBtn');
+const tutorial = document.getElementById('tutorial');
+const menuTutorial = document.getElementById('menuTutorial');
 
 const keysFirstRow = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
 const keysSecondRow = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
@@ -1544,6 +1546,16 @@ menuDinamico.addEventListener('click', () => {
   menu.classList.toggle('menuAtivo');
   menuDinamico.classList.toggle('navAtiva');
   appContainer.classList.toggle('containerAtivo');
+});
+
+menuTutorial.addEventListener('click', () => {
+  tutorial.classList.add('TutorialAtivo');
+  appContainer.classList.add('overflowHidden');
+});
+
+tutorial.addEventListener('click', () => {
+  tutorial.classList.remove('TutorialAtivo');
+  appContainer.classList.remove('overflowHidden');
 });
 
 replayBtn.addEventListener('click', () => {

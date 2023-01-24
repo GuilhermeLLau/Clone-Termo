@@ -8,11 +8,45 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <title>Dueto</title>
 </head>
 
 <body>
+  <div id="tutorial" class="TutorialWrapper">
+    <div class="TutorialCard">
+      <p>Descubra as palavras certas. Depois de cada
+        tentativa, as peças mostram o quão perto você está da solução.</p>
+      <div class="wrap">
+        <span class="coluna correto">T</span>
+        <span class="coluna">U</span>
+        <span class="coluna">R</span>
+        <span class="coluna">M</span>
+        <span class="coluna">A</span>
+      </div>
+      <p class="spanWrapper"> A letra <span class="spanletra correto">T</span> faz parte da palavra e está na
+        posição correta.</p>
+      <div class="wrap">
+        <span class="coluna">V</span>
+        <span class="coluna">I</span>
+        <span class="coluna posicaoErrada">O</span>
+        <span class="coluna">L</span>
+        <span class="coluna">A</span>
+      </div>
+      <p class="spanWrapper">A letra <span class="spanletra posicaoErrada">O</span> faz parte da palavra mas está na posição errada.</p>
+      <div class="wrap">
+        <span class="coluna correto">P</span>
+        <span class="coluna correto">U</span>
+        <span class="coluna correto">L</span>
+        <span class="coluna errado">G</span>
+        <span class="coluna correto">A</span>
+      </div>
+      <p class="spanWrapper">A letra <span class="spanletra errado">G</span> não faz parte da palavra.</p>
+      <p>Os acentos são preenchidos automáticamente, e não são considerados nas dicas</p>
+      <p>As palavras podem possuir letras repetidas</p>
+    </div>
+  </div>
   <div id="Menu" class="menuDinamico">
     <a href="index.html" class="menuLi">termo</a>
     <a href="#" class="menuLi">dueto</a>
@@ -22,12 +56,12 @@
     <div class="app-header">
       <div class="menu">
         <a id="menuDinamico" class="menu-spanNav">^</a>
-        <div class="menu-span">?</div>
+        <div id="menuTutorial" class="menu-span">?</div>
       </div>
       <h1>Dueto</h1>
       <div class="menu">
-        <div class="menu-span">📊</div>
-        <div class="menu-span">⚙</div>
+        <a href="https://www.linkedin.com/in/guilhermelau/" target="_blank" class="menu-span"><img src="/assets/linkedin-svgrepo-com (1).svg" alt=""></a>
+        <a href="https://github.com/GuilhermeLLau/Clone-Termo" target="_blank" class="menu-span"><img src="/assets/github-svgrepo-com.svg" alt=""></a>
       </div>
     </div>
     <div class="dueto">

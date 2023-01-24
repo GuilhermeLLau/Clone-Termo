@@ -14,6 +14,56 @@ body {
 
 }
 
+.overflowHidden {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.TutorialWrapper {
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+.TutorialAtivo {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.TutorialCard {
+  width: 100%;
+  max-width: 60%;
+  height: 80vh;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #6E5C62;
+  position: relative;
+  border-radius: 10px;
+}
+
+.spanWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.spanletra {
+  font-size: 1.2rem;
+  width: 42px;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 10%;
+  border: 4px solid rgba(0, 0, 0, 0.5);
+}
+
+.wrap {
+  margin: 1rem 0;
+  display: flex;
+  max-width: 330px;
+  font-size: 0.8rem;
+}
+
 .menuDinamico {
   width: 100vw;
   background-color: #222222;
@@ -82,6 +132,7 @@ body {
   display: flex;
   gap: 0.2rem;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .menu-span {
@@ -93,7 +144,10 @@ body {
   height: 30px;
   border: 1px solid #B7AEB4;
   border-radius: 10%;
-  overflow-y: hidden;
+}
+
+.menu-span img {
+  padding: 0.2rem;
 }
 
 .menu-spanNav {
@@ -143,6 +197,8 @@ body {
   background-color: #4c4347;
 }
 
+
+
 .tecla {
   max-width: 100%;
   min-width: 50px;
@@ -156,6 +212,8 @@ body {
   font-weight: 600;
   font-size: 1.2rem;
 }
+
+
 
 .app-game {
   margin: 0 auto;
@@ -241,3 +299,21 @@ body {
   margin: 0 auto;
 }
 
+@media (max-width: 500px)
+{
+  .tecla {
+    min-width: 26px;
+   }
+   .dueto {
+    flex-direction: column;
+    align-items: center;
+   }
+   .app-game2 {
+    min-width: 330px;
+   }
+   .quarteto {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+   }
+}

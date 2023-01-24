@@ -8,6 +8,8 @@ const estatisticas = document.getElementById('estatisticas');
 const menu = document.getElementById('Menu');
 const resposta = document.getElementById('resposta');
 const replayBtn = document.getElementById('replayBtn');
+const tutorial = document.getElementById('tutorial');
+const menuTutorial = document.getElementById('menuTutorial');
 
 const ArrayX = [
   'sagaz',
@@ -1028,6 +1030,7 @@ let colunaAtual = 0;
 const colunas = 5;
 const linhas = 6;
 let ganhou = false;
+let perdeu = false;
 const palpites = [];
 const termoMapa = {};
 let termo = termoo.toUpperCase();
@@ -1109,19 +1112,22 @@ const ChecaPalpite = () => {
   }
   if (palpite === termo) {
     ganhou = true;
-    resposta.textContent = `A palavra correta é: ${termoo}   |`;
-    replayBtn.textContent = 'Jogar Novamente';
     return;
   }
   {
     if (linhaAtual === linhas - 1) {
-      window.alert('Errou');
-      resposta.textContent = `A palavra correta é: ${termoo}   |`;
-      replayBtn.textContent = 'Jogar Novamente';
+      perdeu = true;
       return;
     } else {
       ProximaLinha();
     }
+  }
+};
+
+const Ganhaste = () => {
+  if (ganhou === true) {
+    resposta.textContent = `A palavra correta é: ${termoo.toUpperCase()}  |`;
+    replayBtn.textContent = 'Jogar Novamente';
   }
 };
 
@@ -1158,6 +1164,7 @@ const HandleBackSpace = () => {
 
 const enterButton = document.createElement('button');
 enterButton.addEventListener('click', ChecaPalpite);
+enterButton.addEventListener('click', Ganhaste);
 enterButton.setAttribute('class', 'enter');
 enterButton.textContent = '✔';
 keyBoardRow3.append(enterButton);
@@ -1172,6 +1179,7 @@ document.onkeydown = function (evt) {
   evt = evt || window.evt;
   if (evt.key === 'Enter') {
     ChecaPalpite();
+    Ganhaste();
   } else if (evt.key === 'Backspace') {
     HandleBackSpace();
   } else {
@@ -1187,6 +1195,15 @@ menuDinamico.addEventListener('click', () => {
   appContainer.classList.toggle('containerAtivo');
 });
 
+menuTutorial.addEventListener('click', () => {
+  tutorial.classList.add('TutorialAtivo');
+  appContainer.classList.add('overflowHidden');
+});
+
+tutorial.addEventListener('click', () => {
+  tutorial.classList.remove('TutorialAtivo');
+  appContainer.classList.remove('overflowHidden');
+});
 replayBtn.addEventListener('click', () => {
   window.location.reload();
 });
