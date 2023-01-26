@@ -1175,16 +1175,15 @@ const ChecaPalpite = () => {
   }
   if (palpite === termo) {
     ganhou = true;
-    if (ganhou === true && ganhouD === true) {
-      console.log('taporra');
-      resposta.textContent = `As palavras corretas são: ${termo}, ${dueto}   |`;
-      replayBtn.textContent = 'Jogar Novamente';
-    }
     return;
   }
   {
     if (linhaAtual === linhas - 1) {
-      window.alert('Errou');
+      resposta.textContent = `As palavras corretas são: ${termo}, ${dueto}   |`;
+      replayBtn.textContent = 'Jogar Novamente';
+      menu.classList.add('menuAtivo');
+      appContainer.classList.add('containerAtivo');
+      menuDinamico.classList.add('navAtiva');
     } else {
       ProximaLinha();
     }
@@ -1217,15 +1216,15 @@ const ChecaPalpiteD = () => {
   }
   if (palpiteD === dueto) {
     ganhouD = true;
-    if (ganhou === true && ganhouD === true) {
-      console.log('taporra');
-      resposta.textContent = `As palavras corretas são: ${termo}, ${dueto}   |`;
-      replayBtn.textContent = 'Jogar Novamente';
-    }
     return;
   }
   {
     if (linhaAtualD === linhas - 1) {
+      resposta.textContent = `As palavras corretas são: ${termo}, ${dueto}   |`;
+      replayBtn.textContent = 'Jogar Novamente';
+      menu.classList.add('menuAtivo');
+      appContainer.classList.add('containerAtivo');
+      menuDinamico.classList.add('navAtiva');
     } else {
       ProximaLinhaD();
     }
@@ -1297,6 +1296,16 @@ const HandleBackSpaceD = () => {
   letraAtualD.textContent = '';
 };
 
+const Ganhaste = () => {
+  if (ganhou === true && ganhouD === true) {
+    resposta.textContent = `As palavras corretas são: ${termo}, ${dueto}   |`;
+    replayBtn.textContent = 'Jogar Novamente';
+    menu.classList.add('menuAtivo');
+    appContainer.classList.add('containerAtivo');
+    menuDinamico.classList.add('navAtiva');
+  }
+};
+
 // APAGAR SEGUNDO TABULEIRO
 
 const enterButton = document.createElement('button');
@@ -1309,6 +1318,7 @@ keyBoardRow3.append(enterButton);
 const backSpaceButton = document.createElement('button');
 backSpaceButton.addEventListener('click', HandleBackSpace);
 backSpaceButton.addEventListener('click', HandleBackSpaceD);
+backSpaceButton.addEventListener('click', Ganhaste);
 backSpaceButton.setAttribute('class', 'backspace');
 backSpaceButton.textContent = '↩';
 keyBoardRow2.append(backSpaceButton);
@@ -1318,6 +1328,7 @@ document.onkeydown = function (evt) {
   if (evt.key === 'Enter') {
     ChecaPalpite();
     ChecaPalpiteD();
+    Ganhaste();
   } else if (evt.key === 'Backspace') {
     HandleBackSpace();
     HandleBackSpaceD();

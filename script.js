@@ -1030,7 +1030,6 @@ let colunaAtual = 0;
 const colunas = 5;
 const linhas = 6;
 let ganhou = false;
-let perdeu = false;
 const palpites = [];
 const termoMapa = {};
 let termo = termoo.toUpperCase();
@@ -1116,7 +1115,11 @@ const ChecaPalpite = () => {
   }
   {
     if (linhaAtual === linhas - 1) {
-      perdeu = true;
+      resposta.textContent = `A palavra correta era: ${termoo.toUpperCase()}  |`;
+      replayBtn.textContent = 'Tente Novamente';
+      menu.classList.add('menuAtivo');
+      appContainer.classList.add('containerAtivo');
+      menuDinamico.classList.add('navAtiva');
       return;
     } else {
       ProximaLinha();

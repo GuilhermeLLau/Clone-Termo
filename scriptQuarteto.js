@@ -1265,7 +1265,11 @@ const ChecaPalpite = () => {
     return;
   } else {
     if (linhaAtual === linhas - 1) {
-      window.alert('Errou');
+      resposta.textContent = `As palavras corretas são: ${termo}, ${termo2}, ${termo3}, ${termo4}   |`;
+      replayBtn.textContent = 'Jogar Novamente';
+      menu.classList.add('menuAtivo');
+      appContainer.classList.add('containerAtivo');
+      menuDinamico.classList.add('navAtiva');
     } else {
       ProximaLinha();
     }
@@ -1297,7 +1301,11 @@ const ChecaPalpite2 = () => {
     return;
   } else {
     if (linhaAtual2 === linhas - 1) {
-      window.alert('Errou');
+      resposta.textContent = `As palavras corretas são: ${termo}, ${termo2}, ${termo3}, ${termo4}   |`;
+      replayBtn.textContent = 'Jogar Novamente';
+      menu.classList.add('menuAtivo');
+      appContainer.classList.add('containerAtivo');
+      menuDinamico.classList.add('navAtiva');
     } else {
       ProximaLinha2();
     }
@@ -1329,7 +1337,11 @@ const ChecaPalpite3 = () => {
     return;
   } else {
     if (linhaAtual3 === linhas - 1) {
-      window.alert('Errou');
+      resposta.textContent = `As palavras corretas são: ${termo}, ${termo2}, ${termo3}, ${termo4}   |`;
+      replayBtn.textContent = 'Jogar Novamente';
+      menu.classList.add('menuAtivo');
+      appContainer.classList.add('containerAtivo');
+      menuDinamico.classList.add('navAtiva');
     } else {
       ProximaLinha3();
     }
@@ -1361,7 +1373,11 @@ const ChecaPalpite4 = () => {
     return;
   } else {
     if (linhaAtual4 === linhas - 1) {
-      window.alert('Errou');
+      resposta.textContent = `As palavras corretas são: ${termo}, ${termo2}, ${termo3}, ${termo4}   |`;
+      replayBtn.textContent = 'Jogar Novamente';
+      menu.classList.add('menuAtivo');
+      appContainer.classList.add('containerAtivo');
+      menuDinamico.classList.add('navAtiva');
     } else {
       ProximaLinha4();
     }
@@ -1377,6 +1393,9 @@ const Ganhaste = () => {
   ) {
     resposta.textContent = `As palavras corretas são: ${termo}, ${termo2}, ${termo3}, ${termo4}   |`;
     replayBtn.textContent = 'Jogar Novamente';
+    menu.classList.add('menuAtivo');
+    appContainer.classList.add('containerAtivo');
+    menuDinamico.classList.add('navAtiva');
   }
 };
 
